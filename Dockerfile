@@ -1,7 +1,7 @@
 FROM python:3.7-buster
 
 # Configuration defaults
-ENV FLASK_ROOT "/opt/examples"
+ENV FLASK_ROOT "/opt/app"
 ENV HTTP_PORT "8000"
 ENV FLASK_USER "www-data"
 ARG USER_ID="1000"
@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR "$FLASK_ROOT"
-ADD examples/requirements.txt .
+ADD app/requirements.txt .
 
 # Setup Python virtualenv separately from code dir
 RUN pip install virtualenv && \
